@@ -1,7 +1,9 @@
 #ifndef LOOP_HPP
 #define LOOP_HPP
 
-#include <HandFile.hpp>
+#include <HeadFile.hpp>
+
+extern class Alice alice;
 
 namespace Loop
 {

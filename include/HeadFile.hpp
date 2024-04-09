@@ -3,7 +3,9 @@
 
 #include <Arduino.h>
 #include <SoftwareSerial.h>
+#include <ArduinoJson.h>
 
 #include <Alice.hpp>
+#include <Handware.hpp>
 
 #endif

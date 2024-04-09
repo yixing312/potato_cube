@@ -10,11 +10,25 @@ enum State
     PLAYING,    // Alice 正在玩游戏
 };
 
+struct node
+{
+    int ID;
+    enum Direction
+    {
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT,
+    } direction;
+};
+
 class Alice
 {
 private:
     int ID;
     State state;
+    node fa;
+    node sons[3];
 
 public:
     Alice()
@@ -23,8 +37,20 @@ public:
         state = SLEEP;
     }
     int getID() { return ID; }
+
     State getState() { return state; }
-    int setState(State s) { state = s; }
+    void setState(State s) { state = s; }
+    void setState(String s)
+    {
+        if (s == "SLEEP")
+            state = SLEEP;
+        else if (s == "AWAKE")
+            state = AWAKE;
+        else if (s == "SHAKE_HAND")
+            state = SHAKE_HAND;
+        else if (s == "PLAYING")
+            state = PLAYING;
+    }
 };
 
 #endif // ALICE_HPP
