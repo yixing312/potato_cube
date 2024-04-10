@@ -22,10 +22,16 @@ namespace Handware
     extern SoftwareSerial serial3; // RX, TX for software serial 3
     extern SoftwareSerial serial4; // RX, TX for software serial 4
 
-    void ServelInit();
-    void ServelWrite(SoftwareSerial &serial, const char *str);
-    void ServelWrite(const char *str);
-    void ServelWriteSons(const char *str);
+#define SERIAL(i) serial##i
+#define SERIAL_RX(i) SERIAL##i##_RX
+#define SERIAL_TX(i) SERIAL##i##_TX
+
+    void SerialInit();
+    void SerialWrite(SoftwareSerial &serial, const char *str);
+    void SerialWrite(const char *str);
+    void SerialWriteFather(const char *str);
+    void SerialWriteSons(const char *str);
+
     JsonDocument SerialRead();
     JsonDocument SerialRead(SoftwareSerial &serial);
 

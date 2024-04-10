@@ -4,14 +4,14 @@ void Loop::Sleep() {}
 
 void Loop::Awake()
 {
-    Handware::ServelInit();
+    Handware::SerialInit();
     alice.setState(SHAKE_HAND);
 }
 void Loop::ShakeHand()
 {
     JsonDocument doc;
     doc["ID"] = alice.getID();
-    Handware::ServelWrite(doc.as<String>().c_str());
+    Handware::SerialWrite(doc.as<String>().c_str());
     Serial.println(doc.as<String>().c_str());
 }
 

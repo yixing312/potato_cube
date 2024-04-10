@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <ArduinoJson.h>
 #ifndef ALICE_HPP
 #define ALICE_HPP
 
@@ -13,13 +14,20 @@ enum State
 struct node
 {
     int ID;
-    enum Direction
+    int Serial_ID;
+    String getDirection()
     {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-    } direction;
+        if (Serial_ID == 1)
+            return "LEFT";
+        else if (Serial_ID == 2)
+            return "RIGHT";
+        else if (Serial_ID == 3)
+            return "UP";
+        else if (Serial_ID == 4)
+            return "DOWN";
+        else
+            return "ERROR";
+    }
 };
 
 class Alice
@@ -27,30 +35,17 @@ class Alice
 private:
     int ID;
     State state;
-    node fa;
-    node sons[3];
+    node fa, sons[3];
 
 public:
-    Alice()
-    {
-        ID = random(0, 1000327);
-        state = SLEEP;
-    }
+    Alice() : state(SLEEP) { ID = random(0, 1000327); }
     int getID() { return ID; }
 
     State getState() { return state; }
     void setState(State s) { state = s; }
-    void setState(String s)
-    {
-        if (s == "SLEEP")
-            state = SLEEP;
-        else if (s == "AWAKE")
-            state = AWAKE;
-        else if (s == "SHAKE_HAND")
-            state = SHAKE_HAND;
-        else if (s == "PLAYING")
-            state = PLAYING;
-    }
+    void setState(String s);
+
+    JsonDocument getSons();
 };
 
 #endif // ALICE_HPP

@@ -7,7 +7,7 @@ void setup()
 {
     alice.setState(AWAKE);
     // Initialize software serial communication
-    Handware::ServelInit();
+    Handware::SerialInit();
 }
 
 void loop()

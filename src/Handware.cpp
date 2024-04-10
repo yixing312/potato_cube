@@ -7,7 +7,7 @@ namespace Handware
     SoftwareSerial serial3(SERIAL3_RX, SERIAL3_TX); // RX, TX for software serial 3
     SoftwareSerial serial4(SERIAL4_RX, SERIAL4_TX); // RX, TX for software serial 4
 
-    void ServelInit()
+    void SerialInit()
     {
         // Serial.begin(9600); // Initialize hardware serial communication
         Serial.begin(9600);
@@ -17,8 +17,8 @@ namespace Handware
         serial4.begin(9600);
     }
 
-    void ServelWrite(SoftwareSerial &serial, const char *str) { serial.println(str); }
-    void ServelWrite(const char *str) { serial1.println(str); }
+    void SerialWrite(SoftwareSerial &serial, const char *str) { serial.println(str); }
+    void SerialWrite(const char *str) { serial1.println(str); }
 
     JsonDocument SerialRead()
     {
