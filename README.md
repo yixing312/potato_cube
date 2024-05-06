@@ -35,3 +35,20 @@
 小方块，单面屏幕，四面联动，联动面考虑磁吸接口，选择较小的开发板，预计接口数量为 Vcc+Gnd+SPI x 1+UART x 4
 
 屏幕设计：先购买，如果屏幕不满足需求，考虑单色模糊像素块
+
+## 引脚设计
+
+四个串口占用 5~12 号针脚
+剩余针脚可用：2~4，A0~A5 这些针脚
+电源布线采用并联方式
+
+```cpp
+void testdrawrects(uint16_t color);
+void testfillrects(uint16_t color1, uint16_t color2);
+void testfillcircles(uint8_t radius, uint16_t color);
+void testdrawcircles(uint8_t radius, uint16_t color);
+void testtriangles();
+void testroundrects();
+void tftPrintTest();
+void mediabuttons();
+```
