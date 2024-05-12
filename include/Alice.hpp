@@ -9,6 +9,7 @@ enum State
     AWAKE,      // 睡醒了，Alice 找不到人说话
     SHAKE_HAND, // Alice 加入了游戏部
     PLAYING,    // Alice 正在玩游戏
+    SUNDAY,     // 神主日，星期天
 };
 
 struct node
@@ -29,6 +30,11 @@ struct node
             return "ERROR";
     }
 };
+struct Sunday_data
+{
+    unsigned long time;
+    const char *time_string;
+};
 
 class Alice
 {
@@ -38,6 +44,7 @@ private:
     node fa, sons[3];
 
 public:
+    Sunday_data sunday_data;
     Alice() : state(SLEEP) { ID = random(0, 1000327); }
     int getID() { return ID; }
 

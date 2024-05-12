@@ -11,6 +11,7 @@ namespace Loop
     void Awake();
     void ShakeHand();
     void Playing();
+    void Sunday();
 } // namespace name
 
 #endif

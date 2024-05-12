@@ -19,7 +19,5 @@ JsonDocument Alice::getSons()
 {
     JsonDocument doc, command;
     command["command"] = "getSons";
-    Handware::SerialWriteSons(command.as<String>().c_str());
-
     return doc;
 }

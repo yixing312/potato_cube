@@ -24,6 +24,27 @@
 #define TFT_SCLK 13
 #define TFT_RST 8
 
+struct STRN_SYS_TIMER
+{
+    u16 bTag10us : 1;
+    u16 bTag20us : 1;
+    u16 bTag50us : 1;
+    u16 bTag100us : 1;
+    u16 bTag1ms : 1;
+    u16 bTag5ms : 1;
+    u16 bTag10ms : 1;
+    u16 bTag20ms : 1;
+    u16 bTag25ms : 1;
+    u16 bTag50ms : 1;
+    u16 bTag100ms : 1;
+    u16 bTag200ms : 1;
+    u16 bTag500ms : 1;
+    u16 bTag1s : 1;
+    u16 bTag1D1s : 1;
+    u16 bTag2s : 1;
+    u16 bTag2D5s : 1;
+};
+
 namespace Handware
 {
     extern SoftwareSerial serial_1; // RX, TX for software serial 1
@@ -31,6 +52,9 @@ namespace Handware
     extern SoftwareSerial serial_3; // RX, TX for software serial 3
     extern SoftwareSerial serial_4; // RX, TX for software serial 4
     extern Adafruit_ST7735 tft;     // TFT screen
+    extern STRN_SYS_TIMER sys_timer;
+    extern unsigned long sys_start;
+    extern unsigned long sys_count;
 
 #define SERIAL(i) serial_##i
 #define SERIAL_RX(i) SERIAL##i##_RX

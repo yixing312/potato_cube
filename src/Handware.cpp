@@ -8,7 +8,9 @@ namespace Handware
     SoftwareSerial serial_4(SERIAL4_RX, SERIAL4_TX); // RX, TX for software serial 4
     SoftwareSerial *serials[] = {&serial_1, &serial_2, &serial_3, &serial_4};
     Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
-
+    STRN_SYS_TIMER sys_timer;
+    unsigned long sys_start = 0;
+    unsigned long sys_count = 0;
     void HardwareInit()
     {
         SerialInit();
@@ -46,6 +48,8 @@ namespace Handware
 
     JsonDocument SerialRead(SoftwareSerial &serial)
     {
+        if (serial.available() == 0)
+            return JsonDocument();
         String receivedData = serial.readString();
         JsonDocument doc;
         DeserializationError error = deserializeJson(doc, receivedData);
